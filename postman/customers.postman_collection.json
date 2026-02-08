@@ -1,0 +1,154 @@
+{
+  "info": {
+    "name": "Regulus AML - Customers",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8081"
+    },
+    {
+      "key": "request_id",
+      "value": "postman-request-id"
+    },
+    {
+      "key": "forwarded_for",
+      "value": "127.0.0.1"
+    },
+    {
+      "key": "device_id",
+      "value": "postman-device"
+    },
+    {
+      "key": "customer_id",
+      "value": ""
+    },
+    {
+      "key": "account_number",
+      "value": ""
+    },
+    {
+      "key": "transaction_id",
+      "value": ""
+    },
+    {
+      "key": "alert_id",
+      "value": ""
+    },
+    {
+      "key": "case_id",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Create Customer",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Request-ID",
+            "value": "{{request_id}}"
+          },
+          {
+            "key": "X-Forwarded-For",
+            "value": "{{forwarded_for}}"
+          },
+          {
+            "key": "X-Device-Id",
+            "value": "{{device_id}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/customers/",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customer_type\": \"individual\",\n  \"full_name\": \"Alice Johnson\",\n  \"date_of_birth\": \"1985-04-12\",\n  \"nationality\": \"US\",\n  \"residency_country\": \"US\",\n  \"id_type\": \"SSN\",\n  \"id_number\": \"123-45-6789\",\n  \"phone\": \"+1-202-555-0111\",\n  \"email\": \"alice@example.com\",\n  \"address_line1\": \"123 Main St\",\n  \"address_city\": \"New York\",\n  \"address_country\": \"US\",\n  \"kyc_status\": \"verified\",\n  \"kyc_verified_date\": \"2025-01-01\",\n  \"kyc_expired_date\": null,\n  \"risk_rating\": \"low\"\n}"
+        }
+      }
+    },
+    {
+      "name": "List Customers",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Request-ID",
+            "value": "{{request_id}}"
+          },
+          {
+            "key": "X-Forwarded-For",
+            "value": "{{forwarded_for}}"
+          },
+          {
+            "key": "X-Device-Id",
+            "value": "{{device_id}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/customers/?page=1&page_size=20"
+      }
+    },
+    {
+      "name": "Get Customer",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Request-ID",
+            "value": "{{request_id}}"
+          },
+          {
+            "key": "X-Forwarded-For",
+            "value": "{{forwarded_for}}"
+          },
+          {
+            "key": "X-Device-Id",
+            "value": "{{device_id}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/customers/{{customer_id}}"
+      }
+    },
+    {
+      "name": "Update Customer",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "X-Request-ID",
+            "value": "{{request_id}}"
+          },
+          {
+            "key": "X-Forwarded-For",
+            "value": "{{forwarded_for}}"
+          },
+          {
+            "key": "X-Device-Id",
+            "value": "{{device_id}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/customers/{{customer_id}}",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"phone\": \"+1-202-555-0199\",\n  \"risk_rating\": \"medium\"\n}"
+        }
+      }
+    }
+  ]
+}

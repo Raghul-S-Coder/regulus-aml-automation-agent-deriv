@@ -1,0 +1,175 @@
+{
+  "info": {
+    "name": "Regulus AML - Cases",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8081"
+    },
+    {
+      "key": "request_id",
+      "value": "postman-request-id"
+    },
+    {
+      "key": "forwarded_for",
+      "value": "127.0.0.1"
+    },
+    {
+      "key": "device_id",
+      "value": "postman-device"
+    },
+    {
+      "key": "customer_id",
+      "value": ""
+    },
+    {
+      "key": "account_number",
+      "value": ""
+    },
+    {
+      "key": "transaction_id",
+      "value": ""
+    },
+    {
+      "key": "alert_id",
+      "value": ""
+    },
+    {
+      "key": "case_id",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "List Cases",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Request-ID",
+            "value": "{{request_id}}"
+          },
+          {
+            "key": "X-Forwarded-For",
+            "value": "{{forwarded_for}}"
+          },
+          {
+            "key": "X-Device-Id",
+            "value": "{{device_id}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/cases/?page=1&page_size=20"
+      }
+    },
+    {
+      "name": "Get Case",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Request-ID",
+            "value": "{{request_id}}"
+          },
+          {
+            "key": "X-Forwarded-For",
+            "value": "{{forwarded_for}}"
+          },
+          {
+            "key": "X-Device-Id",
+            "value": "{{device_id}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/cases/{{case_id}}"
+      }
+    },
+    {
+      "name": "Get Case Documents",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Request-ID",
+            "value": "{{request_id}}"
+          },
+          {
+            "key": "X-Forwarded-For",
+            "value": "{{forwarded_for}}"
+          },
+          {
+            "key": "X-Device-Id",
+            "value": "{{device_id}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/cases/{{case_id}}/documents"
+      }
+    },
+    {
+      "name": "Submit Case Decision",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Request-ID",
+            "value": "{{request_id}}"
+          },
+          {
+            "key": "X-Forwarded-For",
+            "value": "{{forwarded_for}}"
+          },
+          {
+            "key": "X-Device-Id",
+            "value": "{{device_id}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/cases/{{case_id}}/decisions",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"decision\": \"REJECT\",\n  \"decision_by\": \"compliance_manager1\",\n  \"decision_reason\": \"False positive\",\n  \"next_action\": \"release\"\n}"
+        }
+      }
+    },
+    {
+      "name": "Generate SAR",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Request-ID",
+            "value": "{{request_id}}"
+          },
+          {
+            "key": "X-Forwarded-For",
+            "value": "{{forwarded_for}}"
+          },
+          {
+            "key": "X-Device-Id",
+            "value": "{{device_id}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/cases/{{case_id}}/generate-sar"
+      }
+    }
+  ]
+}

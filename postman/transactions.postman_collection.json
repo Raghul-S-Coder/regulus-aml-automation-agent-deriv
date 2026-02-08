@@ -1,0 +1,150 @@
+{
+  "info": {
+    "name": "Regulus AML - Transactions",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8081"
+    },
+    {
+      "key": "request_id",
+      "value": "postman-request-id"
+    },
+    {
+      "key": "forwarded_for",
+      "value": "127.0.0.1"
+    },
+    {
+      "key": "device_id",
+      "value": "postman-device"
+    },
+    {
+      "key": "customer_id",
+      "value": ""
+    },
+    {
+      "key": "account_number",
+      "value": ""
+    },
+    {
+      "key": "transaction_id",
+      "value": ""
+    },
+    {
+      "key": "alert_id",
+      "value": ""
+    },
+    {
+      "key": "case_id",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Create Transaction (Deposit)",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Request-ID",
+            "value": "{{request_id}}"
+          },
+          {
+            "key": "X-Forwarded-For",
+            "value": "{{forwarded_for}}"
+          },
+          {
+            "key": "X-Device-Id",
+            "value": "{{device_id}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/transactions/",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"account_number\": \"{{account_number}}\",\n  \"transaction_amount\": 500.0,\n  \"transaction_currency\": \"USD\",\n  \"transaction_type\": \"deposit\",\n  \"transaction_date\": \"2026-02-07T10:00:00Z\",\n  \"deposit_source_country\": \"US\"\n}"
+        }
+      }
+    },
+    {
+      "name": "List Transactions",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Request-ID",
+            "value": "{{request_id}}"
+          },
+          {
+            "key": "X-Forwarded-For",
+            "value": "{{forwarded_for}}"
+          },
+          {
+            "key": "X-Device-Id",
+            "value": "{{device_id}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/transactions/?page=1&page_size=20"
+      }
+    },
+    {
+      "name": "Get Transaction",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Request-ID",
+            "value": "{{request_id}}"
+          },
+          {
+            "key": "X-Forwarded-For",
+            "value": "{{forwarded_for}}"
+          },
+          {
+            "key": "X-Device-Id",
+            "value": "{{device_id}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/transactions/{{transaction_id}}"
+      }
+    },
+    {
+      "name": "List Transactions By Account",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Request-ID",
+            "value": "{{request_id}}"
+          },
+          {
+            "key": "X-Forwarded-For",
+            "value": "{{forwarded_for}}"
+          },
+          {
+            "key": "X-Device-Id",
+            "value": "{{device_id}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/transactions/account/{{account_number}}?page=1&page_size=20"
+      }
+    }
+  ]
+}

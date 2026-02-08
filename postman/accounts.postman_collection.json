@@ -1,0 +1,179 @@
+{
+  "info": {
+    "name": "Regulus AML - Accounts",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "base_url",
+      "value": "http://127.0.0.1:8081"
+    },
+    {
+      "key": "request_id",
+      "value": "postman-request-id"
+    },
+    {
+      "key": "forwarded_for",
+      "value": "127.0.0.1"
+    },
+    {
+      "key": "device_id",
+      "value": "postman-device"
+    },
+    {
+      "key": "customer_id",
+      "value": ""
+    },
+    {
+      "key": "account_number",
+      "value": ""
+    },
+    {
+      "key": "transaction_id",
+      "value": ""
+    },
+    {
+      "key": "alert_id",
+      "value": ""
+    },
+    {
+      "key": "case_id",
+      "value": ""
+    }
+  ],
+  "item": [
+    {
+      "name": "Create Account",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "X-Request-ID",
+            "value": "{{request_id}}"
+          },
+          {
+            "key": "X-Forwarded-For",
+            "value": "{{forwarded_for}}"
+          },
+          {
+            "key": "X-Device-Id",
+            "value": "{{device_id}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/accounts/",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"customer_id\": \"{{customer_id}}\",\n  \"account_type\": \"trading\",\n  \"account_status\": \"active\",\n  \"opened_date\": \"2024-01-10\",\n  \"branch_code\": \"NYC\",\n  \"balance_amount\": 10000.0,\n  \"balance_currency\": \"USD\"\n}"
+        }
+      }
+    },
+    {
+      "name": "List Accounts",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Request-ID",
+            "value": "{{request_id}}"
+          },
+          {
+            "key": "X-Forwarded-For",
+            "value": "{{forwarded_for}}"
+          },
+          {
+            "key": "X-Device-Id",
+            "value": "{{device_id}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/accounts/?page=1&page_size=20"
+      }
+    },
+    {
+      "name": "Get Account",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Request-ID",
+            "value": "{{request_id}}"
+          },
+          {
+            "key": "X-Forwarded-For",
+            "value": "{{forwarded_for}}"
+          },
+          {
+            "key": "X-Device-Id",
+            "value": "{{device_id}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/accounts/{{account_number}}"
+      }
+    },
+    {
+      "name": "List Accounts By Customer",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "X-Request-ID",
+            "value": "{{request_id}}"
+          },
+          {
+            "key": "X-Forwarded-For",
+            "value": "{{forwarded_for}}"
+          },
+          {
+            "key": "X-Device-Id",
+            "value": "{{device_id}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/accounts/customer/{{customer_id}}?page=1&page_size=20"
+      }
+    },
+    {
+      "name": "Update Account",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "X-Request-ID",
+            "value": "{{request_id}}"
+          },
+          {
+            "key": "X-Forwarded-For",
+            "value": "{{forwarded_for}}"
+          },
+          {
+            "key": "X-Device-Id",
+            "value": "{{device_id}}"
+          },
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "url": "{{base_url}}/api/v1/accounts/{{account_number}}",
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"account_status\": \"active\",\n  \"balance_amount\": 12000.0\n}"
+        }
+      }
+    }
+  ]
+}
